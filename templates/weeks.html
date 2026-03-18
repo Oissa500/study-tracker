@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="container" style="margin-top:40px; text-align:center;">
+        <h2>{{ course.course_name }} — {{ course.semester }}</h2>
+        <p><em>Track your study progress week by week.</em></p>
+
+    <!-- Add week form -->
+        <form action="/course/{{ course.id }}" method="post" style="display:inline-block; margin-top:20px; text-align:left;">
+            <label>Week Number:</label><br>
+            <input type="number" name="week_number" min="1" max="16" required autocomplete="off"><br>
+
+            <label>Begin Date:</label><br>
+            <input type="date" name="begin_date" autocomplete="off"><br>
+
+            <label>End Date:</label><br>
+            <input type="date" name="end_date" autocomplete="off"><br>
+
+            <label>Note:</label><br>
+            <input type="text" name="note" placeholder="e.g., Finished Chapter 2" autocomplete="off"><br>
+
+            <label>Progress:</label><br>
+            <input type="text" name="progress" placeholder="e.g., 75% completed" autocomplete="off"><br><br>
+
+            <button type="submit" style="background-color:green; color:white;">Add Week</button>
+        </form>
+
+        <br><br>
+        <table style="margin:auto; border-collapse:collapse; width:80%; text-align:center;">
+            <tr style="background-color:#111;">
+                <th>Week</th>
+                <th>Begin Date</th>
+                <th>End Date</th>
+                <th>Note</th>
+                <th>Progress</th>
+                <th>Last Update</th>
+            </tr>
+            {% for w in weeks %}
+                <tr style="background-color:#1e1e1e;">
+                    <td>{{ w.week_number }}</td>
+                    <td>{{ w.begin_date or "-" }}</td>
+                    <td>{{ w.end_date or "-" }}</td>
+                    <td>{{ w.note or "-" }}</td>
+                    <td>{{ w.progress or "-" }}</td>
+                    <td>{{ w.last_update or "-" }}</td>
+                    <td class="actions-cell">
+                        <a href="/edit_week/{{ w.id }}" class="action-link">Edit</a>
+                        <a href="#" onclick="if(confirm('Delete this week?')) { document.getElementById('delete-{{ w.id }}').submit(); }" class="delete-link">Delete</a>
+                        <form id="delete-{{ w.id }}" action="/delete_week/{{ w.id }}" method="post" style="display:none;"></form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6" style="color:gray;">No weeks added yet.</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br>
+        <a href="/courses" style="color:orange;">← Back to Courses</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,202 @@
+/* === Omar Issa | Study Tracker CSS ===
+   Clean dark theme for my CS50 Final Project
+   Simple, modern, glowing green/blue aesthetic
+*/
+
+/* --- Page base --- */
+body {
+  background: #0d1117;
+  color: #e6edf3;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+/* --- Navbar --- */
+nav {
+  background: #161b22;
+  padding: 14px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.nav-container {
+  width: 85%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-left .brand {
+  color: #00ffc8;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.nav-right a {
+  color: #58a6ff;
+  margin: 0 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.nav-right a:hover {
+  color: #00ffc8;
+  text-shadow: 0 0 6px #00ffc8;
+}
+
+/* --- Mobile nav --- */
+@media (max-width: 768px) {
+  .nav-container { flex-direction: column; }
+  .nav-right { margin-top: 10px; }
+  .nav-right a { display: inline-block; margin: 6px 10px; }
+}
+
+/* --- Small UI elements --- */
+.greeting { color: #00ffc8; font-weight: bold; margin: 15px 0; }
+.flash-message {
+  background: #222; color: white; padding: 10px;
+  border-radius: 6px; width: 60%; margin: 10px auto;
+}
+
+/* --- Titles --- */
+h1 {
+  color: #00ffc8;
+  margin-top: 30px;
+  text-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
+}
+
+/* --- Forms --- */
+form {
+  margin: 20px auto;
+  background: #161b22;
+  padding: 15px 25px;
+  border-radius: 10px;
+  display: inline-block;
+}
+input {
+  width: 200px; margin: 6px 0; padding: 8px;
+  border: 1px solid #30363d; border-radius: 6px;
+  background: #0d1117; color: #e6edf3;
+  transition: 0.2s;
+}
+input:focus {
+  outline: none;
+  border-color: #00ffc8;
+  box-shadow: 0 0 6px rgba(0, 255, 200, 0.5);
+}
+
+/* --- Buttons --- */
+button, .home-btn, .welcome-btn {
+  background: #238636;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+button:hover, .home-btn:hover, .welcome-btn:hover {
+  background: #2ea043;
+  box-shadow: 0 0 10px rgba(0, 255, 200, 0.3);
+}
+
+/* --- Tables --- */
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: #161b22;
+  border-radius: 6px;
+}
+th, td {
+  border: 1px solid #30363d;
+  padding: 10px;
+  text-align: center;
+}
+th { background: #21262d; font-weight: 600; }
+tr:hover { background: #21262d; }
+
+/* --- Login / Register --- */
+.auth-box {
+  background: #161b22;
+  max-width: 360px;
+  margin: 40px auto;
+  padding: 17px 23px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 200, 0.08);
+}
+label { color: #00ffc8; font-weight: 600; margin-bottom: 6px; display: block; }
+
+/* --- Action links (Edit / Delete) --- */
+.actions-cell { white-space: nowrap; }
+.action-link, .delete-link {
+  margin: 0 10px; text-decoration: none; font-weight: 600;
+  transition: 0.25s; font-size: 0.95rem;
+}
+.action-link { color: #00e0ff; }
+.action-link:hover { color: #00ffff; text-shadow: 0 0 6px #00ffff; }
+.delete-link { color: #ff5b5b; }
+.delete-link:hover { color: #ff8080; text-shadow: 0 0 6px #ff4c4c; }
+
+/* --- About Page --- */
+.about-container { margin-top: 60px; animation: fadeIn 1.2s ease-in; }
+.about-title {
+  color: #00ffc8; font-size: 2.2rem;
+  margin-bottom: 25px; text-shadow: 0 0 12px rgba(0, 255, 200, 0.3);
+}
+.about-box {
+  width: 70%; max-width: 800px; margin: 0 auto;
+  background: rgba(22,27,34,0.8);
+  border-radius: 12px; padding: 25px 35px;
+  line-height: 1.7; color: #d1d5db;
+  box-shadow: 0 0 20px rgba(0,255,200,0.08);
+  transition: 0.3s;
+}
+.about-box:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(0,255,200,0.15); }
+.about-box .tech { color: #00e0ff; font-weight: bold; }
+.about-box .quote { color: #00ffc8; font-style: italic; margin-top: 25px; }
+.about-footer { margin-top: 40px; color: #a1a1a1; font-size: 0.95rem; }
+.footer-note { color: #00ffc8; }
+
+/* --- Home / Dashboard --- */
+.home-container, .welcome-container { margin-top: 80px; animation: fadeIn 1s ease-in; }
+.home-container h1, .welcome-title { color: #00ffc8; font-size: 2rem; margin-bottom: 10px; }
+.subtitle, .welcome-sub { color: #a1a1a1; font-size: 1.1rem; margin-bottom: 30px; }
+.home-box {
+  background: #161b22;
+  width: 70%; max-width: 700px; margin: 0 auto;
+  border-radius: 12px; padding: 25px;
+  box-shadow: 0 0 20px rgba(0,255,200,0.05);
+}
+
+/* --- Welcome buttons --- */
+.welcome-buttons { display: flex; justify-content: center; gap: 15px; }
+.welcome-btn.secondary { background: #58a6ff; }
+
+/* --- Stats section --- */
+.stats-box {
+  display: flex; justify-content: center; gap: 40px;
+  margin: 30px 0; animation: fadeIn 1s ease;
+}
+.stat {
+  background: #161b22; border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: 0 0 15px rgba(0,255,200,0.1);
+  transition: 0.3s;
+}
+.stat:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0,255,200,0.25); }
+.stat h2 { color: #00ffc8; font-size: 2rem; margin: 0; }
+.stat p { color: #a1a1a1; margin: 5px 0 0; }
+
+/* --- Simple fade animation --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-box button {
+  margin-top: 10px;
+  width: 100%;
+}

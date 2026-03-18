@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>My Courses</h1>
+
+    <form action="/courses" method="post" class="course-form">
+        <label for="course_name">Course:</label>
+        <input type="text" id="course_name" name="course_name" placeholder="e.g., Calculus" autocomplete="off" required>
+
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" name="semester" placeholder="e.g., Fall 2025" autocomplete="off">
+
+        <label for="note">Note:</label>
+        <input type="text" id="note" name="note" placeholder="Optional note (e.g., Review Ch 2)" autocomplete="off">
+
+        <button type="submit">Add</button>
+    </form>
+
+    {% if not courses %}
+        <p>No courses yet. Add one above.</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Semester</th>
+                <th>Note</th>
+                <th>Last Update</th>
+                <th>Actions</th>
+            </tr>
+            {% for c in courses %}
+                <tr>
+                    <td>{{ c.course_name }}</td>
+                    <td>{{ c.semester or "-" }}</td>
+                    <td>{{ c.note or "-" }}</td>
+                    <td>{{ c.last_update or "-" }}</td>
+                    <td class="actions-cell">
+                        <a href="/course/{{ c.id }}" class="action-link">Open</a>
+                        <a href="/edit_course/{{ c.id }}" class="action-link">Edit</a>
+                        <form action="/delete_course/{{ c.id }}" method="post" class="delete-form">
+                            <button type="submit" class="delete-btn" onclick="return confirm('Delete this course?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

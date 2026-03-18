@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome | Study Tracker{% endblock %}
+
+{% block body %}
+    <section class="welcome-container">
+        <h1 class="welcome-title">Welcome to Study Tracker</h1>
+        <p class="welcome-sub">Organize your study sessions and stay on track</p>
+
+        <div class="welcome-buttons">
+            <a href="/login" class="welcome-btn">Login</a>
+            <a href="/register" class="welcome-btn secondary">Register</a>
+        </div>
+    </section>
+{% endblock %}

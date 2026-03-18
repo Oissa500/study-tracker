@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="container" style="margin-top:40px; text-align:center;">
+        <h2>Edit Week {{ week.week_number }}</h2>
+
+        <form action="/edit_week/{{ week.id }}" method="post" style="display:inline-block; text-align:left;">
+            <label>Begin Date:</label><br>
+            <input type="date" name="begin_date" value="{{ week.begin_date }}" autocomplete="off"><br>
+
+            <label>End Date:</label><br>
+            <input type="date" name="end_date" value="{{ week.end_date }}" autocomplete="off"><br>
+
+            <label>Note:</label><br>
+            <input type="text" name="note" value="{{ week.note }}" autocomplete="off"><br>
+
+            <label>Progress:</label><br>
+            <input type="text" name="progress" value="{{ week.progress }}" autocomplete="off"><br><br>
+
+            <button type="submit" style="background-color:green; color:white;">Save Changes</button>
+            <a href="/course/{{ week.course_id }}" style="margin-left:10px; color:orange;">Cancel</a>
+        </form>
+    </div>
+
+{% endblock %}

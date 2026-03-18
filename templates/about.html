@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About | Study Tracker
+{% endblock %}
+
+{% block body %}
+    <section class="about-container">
+        <h1 class="about-title">About This Project</h1>
+
+        <div class="about-box">
+            <p>
+                <strong>Study Tracker</strong> was created to help students stay organized, motivated,
+                and consistent with their learning. It allows users to track study sessions,
+                record weekly progress, and reflect on their goals for each course.
+            </p>
+
+            <p>
+                This web app is part of <strong>Omar Issa’s CS50 Final Project</strong>, built using
+                <span class="tech">Flask</span>, <span class="tech">SQLite</span>, and
+                <span class="tech">Jinja</span>. It combines clean design, interactive tracking,
+                and simple database logic — all centered around helping students manage their study life effectively.
+            </p>
+
+            <p class="quote">
+                “Small daily progress leads to big long-term success.”
+            </p>
+        </div>
+
+        <div class="about-footer">
+            <p>Developed with 💚 by Omar Issa</p>
+            <p class="footer-note">CS50 • Harvard University • 2025</p>
+        </div>
+    </section>
+{% endblock %}

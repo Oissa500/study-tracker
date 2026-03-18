@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Home | Study Tracker{% endblock %}
+
+{% block body %}
+    <section class="home-container">
+        <h1>👋 Welcome back, {{ user['first_name'] }}!</h1>
+        <p class="subtitle">Here’s your Study Tracker Dashboard</p>
+
+        <div class="stats-box">
+            <div class="stat">
+                <h2>{{ total_courses }}</h2>
+                <p>Courses</p>
+            </div>
+            <div class="stat">
+                <h2>{{ total_weeks }}</h2>
+                <p>Weeks Logged</p>
+            </div>
+        </div>
+
+        <div class="home-box">
+            <p>Use the <a href="/courses">Courses</a> page to manage your study progress and add weekly updates.</p>
+        </div>
+
+        <div class="quick-links">
+            <a href="/courses" class="home-btn">📘 View Courses</a>
+            <a href="/about" class="home-btn">ℹ️ About Project</a>
+        </div>
+    </section>
+{% endblock %}

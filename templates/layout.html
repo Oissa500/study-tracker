@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>{{ title or "Study Tracker" }}</title>
+        <link rel="stylesheet" href="/static/styles.css">
+    </head>
+
+    <body>
+        <nav>
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="/" class="brand">Study Tracker</a>
+                </div>
+
+                <div class="nav-right">
+                    <a href="/about">About</a>
+                    <a href="/">Home</a>
+
+                    {% if session["user_id"] %}
+                        <a href="/courses">Courses</a>
+                        <a href="/change_password">Change Password</a>
+                        <a href="/logout">Logout</a>
+                    {% else %}
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        {% if g.user %}
+            <p class="greeting">👋 Hello, {{ g.user['first_name'] }}!</p>
+        {% endif %}
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+    </body>
+
+</html>
