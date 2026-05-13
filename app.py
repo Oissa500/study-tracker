@@ -7,21 +7,7 @@ import os
 
 
 app = Flask(__name__)
-
-if not os.path.exists("study.db"):
-    open("study.db", "w").close()
-
-db = SQL(os.getenv("DATABASE_URL", "sqlite:///study.db"))
-
-with open("schema.sql") as f:
-    sql_script = f.read()
-
-for statement in sql_script.split(";"):
-    if statement.strip():
-        try:
-            db.execute(statement)
-        except:
-            pass
+db = SQL("sqlite:///study.db")
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
